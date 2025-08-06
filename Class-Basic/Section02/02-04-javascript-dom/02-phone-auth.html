@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>인증번호 요청</title>
+    <script>
+        let 타이머; // 중복 실행 방지용
+
+        function 인증번호요청() {
+            // 6자리 인증번호 생성
+            const 나의인증번호 = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
+            document.getElementById("인증번호보여주는곳").innerText = 나의인증번호;
+
+            // 버튼 비활성화 및 스타일 변경
+            const 버튼 = document.getElementById("버튼");
+            버튼.disabled = true;
+            버튼.style.color = "red";
+
+            // 3분 타이머 설정
+            let 시간 = 180;
+            clearInterval(타이머); // 이전 타이머 제거
+            타이머 = setInterval(function () {
+                if (시간 <= 0) {
+                    clearInterval(타이머);
+                    document.getElementById("남은시간보여주는곳").innerText = "0:00";
+                    버튼.disabled = false;
+                    버튼.style.color = "black";
+                } else {
+                    const 분 = Math.floor(시간 / 60);
+                    const 초 = String(시간 % 60).padStart(2, "0");
+                    document.getElementById("남은시간보여주는곳").innerText = `${분}:${초}`;
+                    시간 -= 1;
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <div id="인증번호보여주는곳">000000</div>
+    <button id="버튼" onclick="인증번호요청()">인증번호 요청하기</button>
+    <div id="남은시간보여주는곳">3:00</div>
+</body>
+</html>

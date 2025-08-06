@@ -1,0 +1,15 @@
+const 프로필 = {
+    이름: '철수' , 나이: 12, 학교: '다람쥐초등학교}
+프로필.이름
+const 사탕바구니 = ["포도맛사탕", "딸기맛사탕"]
+undefined
+사탕
+VM1995:1 Uncaught ReferenceError: 사탕 is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM1995:1Understand this error
+사
+VM2016:1 Uncaught ReferenceError: 사 is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM2016:1Understand this error
+사탕바구니
+(2) ['포도맛사탕', '딸기맛사탕']
